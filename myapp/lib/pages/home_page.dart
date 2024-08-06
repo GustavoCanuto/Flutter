@@ -31,22 +31,53 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
          
-              Text("Foi clicado $quantidadeDeCliques vezes",
-              style: GoogleFonts.acme(fontSize: 20),
+              Expanded(
+                child: Container(
+                  color: Colors.orange,
+                  child: Text("Foi clicado $quantidadeDeCliques vezes",
+                  style: GoogleFonts.acme(fontSize: 20),
+                  ),
+                ),
               ),
             
             
-              Text(numeroGerado.toString(),
-              style: GoogleFonts.acme(fontSize: 20),
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: Container(
+                  color: Colors.brown,
+                  child: Text(numeroGerado.toString(),
+                  style: GoogleFonts.acme(fontSize: 20),
+                  ),
+                ),
               ),
-           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-             Container(color: Colors.red, child: Text("10")),
-             Container(color: Colors.indigo,child: Text("20")),
-             Container(color: Colors.green,child: Text("30")),
-            ],
-            )
+
+
+           Expanded(
+             child: Container(
+              color: Colors.grey,
+               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                 Expanded(
+                  flex: 1,
+                   child: 
+                     Container(color: Colors.red, child: Text("10")),
+                 ),
+                Expanded(
+                  flex: 2,
+                  child: 
+                 Container(color: Colors.indigo,child: Text("20")),
+                ),
+                     Expanded(
+                  flex: 1,
+                  child: 
+                 Container(color: Colors.green,child: Text("30")),
+                     ),
+                ],
+                ),
+             ),
+           )
           ],
         ),
       ),
