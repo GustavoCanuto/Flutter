@@ -23,7 +23,12 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                // margin: EdgeInsets.only(top:50), 
-                width: 200, height: 200, color: Colors.amber,),
+                width: 200, height: 200, color: Colors.amber,
+                child: const Icon(
+                  Icons.person ,
+                   size: 125, 
+                   color:Colors.red),
+                ),
 
                    const SizedBox(
                 height: 10,
@@ -34,7 +39,13 @@ class _LoginPageState extends State<LoginPage> {
                 margin: EdgeInsets.symmetric(horizontal: 30),
                 height: 30,
                 alignment: Alignment.center,
-                child: Text("Informe seu email"),
+                child: Row(
+                  children: [
+                    Expanded(flex: 2, child: Text("Informe seu Email:")),
+                    SizedBox(width:20),
+                    Expanded(flex: 3, child: Text("Email")),
+                  ],
+                ),
               ),
                const SizedBox(
                 height: 20,
@@ -46,6 +57,18 @@ class _LoginPageState extends State<LoginPage> {
                 height: 30,
                 alignment: Alignment.center,
                 child: Text("Informe a senha"),
+              ),
+             Expanded(child: Container()),
+                     Container(
+                color: Colors.green,
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 30),
+                height: 30,
+                alignment: Alignment.center,
+                child: Text("Login"),
+              ),
+              const SizedBox(
+                height: 20,
               )
             ],
           ),
