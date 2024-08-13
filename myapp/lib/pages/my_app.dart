@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           color: Colors.orange, // Explicitamente definindo a cor do AppBar
         ),
-        textTheme:  GoogleFonts.pacificoTextTheme(),
+        textTheme:  GoogleFonts.robotoTextTheme(),
       ),
       home: const LoginPage(),
     );

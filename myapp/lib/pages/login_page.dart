@@ -19,20 +19,33 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 100,
+                height: 80,
               ),
-              Container(
-               // margin: EdgeInsets.only(top:50), 
-                width: 200, height: 200, color: Colors.amber,
-                child: const Icon(
-                  Icons.person ,
-                   size: 125, 
-                   color:Colors.red),
-                ),
 
-                   const SizedBox(
-                height: 10,
+              Row(
+                children: [
+                  Expanded(child: Container()),
+                   Expanded(
+                    flex: 1,
+                    child: Image.network("https://i.pinimg.com/originals/e5/6b/84/e56b841924ac729935e858cb59535fb7.png",
+                     // height: 150,
+                      ),
+                  ),
+                  Expanded(child: Container()),
+                ],
               ),
+
+              const SizedBox(
+                height: 20,
+              ),
+
+              const Text("Já tem cadastro?"),
+              const Text("Faça seu login e make the change_"),
+
+              const SizedBox(
+                height: 15,
+              ),
+
               Container(
                 color: Colors.green,
                 width: double.infinity,
