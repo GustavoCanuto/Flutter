@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -48,15 +50,16 @@ class _LoginPageState extends State<LoginPage> {
 
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 height: 30,
                 alignment: Alignment.center,
-                child: Row(
-                  children: [
-                    Expanded(flex: 2, child: Text("Informe seu Email:", style: TextStyle(color: Colors.white))),
-                    SizedBox(width:20),
-                    Expanded(flex: 3, child: Text("Email", style: TextStyle(color: Colors.white))),
-                  ],
+                child: const TextField(
+                  decoration: InputDecoration(
+                    hintText: "Email",
+                    hintStyle: TextStyle(color: Colors.white),
+                    prefixIcon: Icon(Icons.person, color:Color.fromARGB(255, 107, 54, 138))
+                  ),
+                  
                 ),
               ),
                const SizedBox(
@@ -64,10 +67,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
                    Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 height: 30,
                 alignment: Alignment.center,
-                child: Row(
+                child: const Row(
                   children: [
                     Expanded(flex: 2, child: Text("Informe sua Senha:", style: TextStyle(color: Colors.white))),
                     SizedBox(width:20),
@@ -79,31 +82,38 @@ class _LoginPageState extends State<LoginPage> {
                 height: 20,
               ),
               Container(
-                color: Colors.green,
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                height: 30,
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 alignment: Alignment.center,
-                child: Text("Login"),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: TextButton(onPressed: (){},
+                    style: ButtonStyle(
+                      shape: WidgetStateProperty.all(
+                        RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
+                      ),
+                      backgroundColor: WidgetStateProperty.all(Color.fromARGB(255, 107, 54, 138))),
+                    child: const Text("ENTRAR", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w400),)),
+                ),
               ),
              Expanded(child: Container()),
 
                 Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 height: 30,
                 alignment: Alignment.center,
-                child: Text("Esqueci minha senha", style: TextStyle(fontSize: 16, color: Colors.yellow)),
+                child: const Text("Esqueci minha senha", style: TextStyle(fontSize: 16, color: Colors.yellow)),
               ),
               const SizedBox(
                 height: 10,
               ),
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
+                margin: const EdgeInsets.symmetric(horizontal: 30),
                 height: 30,
                 alignment: Alignment.center,
-                child: Text("Criar conta", style: TextStyle(fontSize: 16, color: Colors.greenAccent)),
+                child: const Text("Criar conta", style: TextStyle(fontSize: 16, color: Colors.greenAccent)),
               ),
                    const SizedBox(
                 height: 50,
