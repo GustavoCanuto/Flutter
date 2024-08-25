@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,6 +12,9 @@ class LoginPage extends StatefulWidget {
 } 
 
 class _LoginPageState extends State<LoginPage> {
+  var email = TextEditingController(text: "email@email.com");
+  TextEditingController senha = TextEditingController();
+  bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -57,9 +62,11 @@ class _LoginPageState extends State<LoginPage> {
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     height: 30,
                     alignment: Alignment.center,
-                    child: const TextField(
+                    child: TextField(
+                      controller: email,
+                      onChanged: (value) { debugPrint(value); },
                       style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         contentPadding: EdgeInsets.only(top:0),
                         hintText: "Email",
                         hintStyle: TextStyle(color: Colors.white),
@@ -78,20 +85,32 @@ class _LoginPageState extends State<LoginPage> {
                     margin: const EdgeInsets.symmetric(horizontal: 30),
                     height: 30,
                     alignment: Alignment.center,
-                    child: const TextField(
-                      style: TextStyle(color: Colors.white),
+                    child: TextField(
+                      obscureText: isObscureText,
+                      controller: senha,
+                      onChanged: (value) => debugPrint(value),
+                      style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.only(top:-5),
-                        enabledBorder: UnderlineInputBorder(
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color:Color.fromARGB(255, 228, 221, 233))
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color:Color.fromARGB(255, 19, 95, 182))
                         ),
                         hintText: "Senha",
-                        hintStyle: TextStyle(color: Colors.white),
-                        prefixIcon: Icon(Icons.lock, color:Color.fromARGB(255, 107, 54, 138)),
-                        suffixIcon: Icon(Icons.visibility_off, color:Color.fromARGB(255, 107, 54, 138))
+                        hintStyle: const TextStyle(color: Colors.white),
+                        prefixIcon: const Icon(Icons.lock, color:Color.fromARGB(255, 107, 54, 138)),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            setState(() {
+                                isObscureText = !isObscureText;
+                            });
+                          },
+                          child: Icon(
+                            isObscureText ? Icons.visibility_off: Icons.visibility, 
+                            color:Color.fromARGB(255, 107, 54, 138)),
+                        )
                       ), 
                     ),
                   ),
@@ -105,7 +124,10 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: Alignment.center,
                     child: SizedBox(
                       width: double.infinity,
-                      child: TextButton(onPressed: (){},
+                      child: TextButton(onPressed: () {
+                       debugPrint(email.text);
+                       debugPrint(senha.text);
+                      },
                         style: ButtonStyle(
                           shape: WidgetStateProperty.all(
                             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))
