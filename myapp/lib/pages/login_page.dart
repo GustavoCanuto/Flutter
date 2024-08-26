@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:myapp/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,8 +13,8 @@ class LoginPage extends StatefulWidget {
 } 
 
 class _LoginPageState extends State<LoginPage> {
-  var email = TextEditingController(text: "email@email.com");
-  TextEditingController senha = TextEditingController();
+  var email = TextEditingController(text: "");
+  TextEditingController senha = TextEditingController(text: "");
   bool isObscureText = true;
   @override
   Widget build(BuildContext context) {
@@ -125,6 +126,17 @@ class _LoginPageState extends State<LoginPage> {
                     child: SizedBox(
                       width: double.infinity,
                       child: TextButton(onPressed: () {
+                        if(email.text.trim() == "email@email.com"
+                        && senha.text.trim() == "123"){
+                          Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => const HomePage())
+                            );
+                        }else{
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text("Erro ao efetuar o login"))
+                          );
+                        }
                        debugPrint(email.text);
                        debugPrint(senha.text);
                       },
