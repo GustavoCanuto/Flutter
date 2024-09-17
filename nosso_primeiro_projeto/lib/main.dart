@@ -26,12 +26,12 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://i.pinimg.com/736x/19/5b/63/195b63e158577c6b2cf16c5e469c979e.jpg'),
-            Task('Andar de Bike',''),
-            Task('Meditar',''),
-            Task("Aprendendo Flutter",''),
-            Task('Andar de Bike',''),
-            Task('Meditar',''),
+            Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://i.pinimg.com/736x/19/5b/63/195b63e158577c6b2cf16c5e469c979e.jpg',2),
+            Task('Andar de Bike','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',3),
+            Task('Meditar','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',5),
+            Task("Aprendendo Flutter",'https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg',3),
+            Task('Andar de Bike','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',4),
+            Task('Meditar','https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg',1),
           ],
         ),
         floatingActionButton: FloatingActionButton(onPressed: () {}),
@@ -43,7 +43,9 @@ class MyApp extends StatelessWidget {
 class Task extends StatefulWidget {
   final String nome;
   final String foto;
-  const Task(this.nome,this.foto, {super.key});
+  final int dificuldade;
+
+  const Task(this.nome,this.foto, this.dificuldade, {super.key});
 
   @override
   State<Task> createState() => _TaskState();
@@ -78,15 +80,30 @@ class _TaskState extends State<Task> {
                         child: Image.network(widget.foto,
                         fit: BoxFit.cover,),
                       ),
-                      Container(
-                        width: 200,
-                        child: Text(
-                          widget.nome,
-                          style: TextStyle(
-                            fontSize: 24,
-                            overflow: TextOverflow.ellipsis,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 200,
+                            child: Text(
+                              widget.nome,
+                              style: TextStyle(
+                                fontSize: 24,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
                           ),
-                        ),
+                          Row(
+                            children: [
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 1) ? Colors.blue : Colors.blue[100],),
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 2) ? Colors.blue : Colors.blue[100],),
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 3) ? Colors.blue : Colors.blue[100]),
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 4) ? Colors.blue : Colors.blue[100]),
+                              Icon(Icons.star, size: 15, color: (widget.dificuldade >= 5) ? Colors.blue : Colors.blue[100]),
+                            ],
+                          ),
+                        ],
                       ),
 
                       Container(
@@ -118,7 +135,9 @@ class _TaskState extends State<Task> {
                       child: Container(
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: nivel / 10,
+                          value: (widget.dificuldade > 0)
+                          ? (nivel/ widget.dificuldade) / 10
+                          : 1,
                         ),
                         width: 200,
                       ),
