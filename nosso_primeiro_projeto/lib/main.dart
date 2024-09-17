@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://i.pinimg.com/736x/19/5b/63/195b63e158577c6b2cf16c5e469c979e.jpg',2),
+            Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',2),
             Task('Andar de Bike','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',3),
             Task('Meditar','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',5),
             Task("Aprendendo Flutter",'https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg',3),
@@ -62,23 +62,35 @@ class _TaskState extends State<Task> {
         child: Stack(
           children: [
             Container(
-              color: Colors.blue,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(4),
+                color: Colors.blue,
+              ),
               height: 140,
             ),
             Column(
               children: [
                 Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4),
+                    color: Colors.white,
+                  ),
                   height: 100,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        color: Colors.black26,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          color: Colors.black26,
+                        ),
                         width: 72,
                         height: 100,
-                        child: Image.network(widget.foto,
-                        fit: BoxFit.cover,),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: Image.network(widget.foto,
+                          fit: BoxFit.cover,),
+                        ),
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
