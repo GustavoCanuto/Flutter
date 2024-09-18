@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool opacidade = true;
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +31,27 @@ class MyApp extends StatelessWidget {
             style: TextStyle(color: Colors.white),
           ),
         ),
-        body: ListView(
-          children: [
-            Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',2),
-            Task('Andar de Bike','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',3),
-            Task('Meditar','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',5),
-            Task("Aprendendo Flutter",'https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg',3),
-            Task('Andar de Bike','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',4),
-            Task('Meditar','https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg',1),
-          ],
+        body: AnimatedOpacity(
+          opacity: opacidade ? 1 : 0,
+          duration: Duration(microseconds: 800),
+          child: ListView(
+            children: [
+              Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',2),
+              Task('Andar de Bike','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',3),
+              Task('Meditar','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',5),
+              Task("Aprendendo Flutter",'https://thebogotapost.com/wp-content/uploads/2017/06/636052464065850579-137719760_flyer-image-1.jpg',3),
+              Task('Andar de Bike','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',4),
+              Task('Meditar','https://manhattanmentalhealthcounseling.com/wp-content/uploads/2019/06/Top-5-Scientific-Findings-on-MeditationMindfulness-881x710.jpeg',1),
+            ],
+          ),
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () {}),
+        floatingActionButton: FloatingActionButton(onPressed: () {
+          setState(() {
+            opacidade = !opacidade;
+          });
+        },
+          child: Icon(Icons.remove_red_eye),
+        ),
       ),
     );
   }
