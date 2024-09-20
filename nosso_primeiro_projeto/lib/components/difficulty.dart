@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nosso_primeiro_projeto/task.dart';
+import 'package:nosso_primeiro_projeto/components/task.dart';
 
 class Difficulty extends StatelessWidget {
 

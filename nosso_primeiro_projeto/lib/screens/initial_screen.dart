@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:nosso_primeiro_projeto/task.dart';
+import 'package:nosso_primeiro_projeto/components/task.dart';
 
 class InitialScreen extends StatefulWidget {
 
@@ -27,9 +26,9 @@ class _InitialScreenState extends State<InitialScreen> {
       ),
       body: AnimatedOpacity(
         opacity: opacidade ? 1 : 0,
-        duration: Duration(microseconds: 800),
+        duration: const Duration(microseconds: 800),
         child: ListView(
-          children: [
+          children: const [
             Task("Aprendendo Flutter no cafe da manha comendo sucrilhos",'https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',2),
             Task('Andar de Bike','https://pbs.twimg.com/media/Eu7m692XIAEvxxP?format=png&name=large',3),
             Task('Meditar','https://images.pexels.com/photos/161172/cycling-bike-trail-sport-161172.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',5),
@@ -44,7 +43,7 @@ class _InitialScreenState extends State<InitialScreen> {
           opacidade = !opacidade;
         });
       },
-        child: Icon(Icons.remove_red_eye),
+        child: const Icon(Icons.remove_red_eye),
       ),
     );
   }
