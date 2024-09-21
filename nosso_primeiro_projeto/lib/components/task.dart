@@ -71,23 +71,33 @@ class _TaskState extends State<Task> {
                     ),
 
                     SizedBox(
-                      height: 72,
+                      height: 56,
                       width: 72,
                       child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                          },
-                          child: const Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Icon(Icons.arrow_drop_up),
-                              Text('UP', style: TextStyle(fontSize: 12),)
-                            ],
-                          )),
+                        onPressed: () {
+                          setState(() {
+                            nivel++;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.white, backgroundColor: Colors.blue, shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8), // Menos arredondado (ajuste o valor)
+                          ), // Cor do texto e ícones
+                        ),
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(Icons.arrow_drop_up,),
+                            Text(
+                              'UP',
+                              style: TextStyle(fontSize: 12,),
+                            ),
+                          ],
+                        ),
+                      ),
                     )
+
                   ],
                 ),
               ),
