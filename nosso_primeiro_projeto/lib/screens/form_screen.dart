@@ -51,6 +51,7 @@ class _FormScreenState extends State<FormScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     controller: difficultyController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -69,6 +70,7 @@ class _FormScreenState extends State<FormScreen> {
           
                         });
                     },
+                    keyboardType: TextInputType.url,
                     controller: imageController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
