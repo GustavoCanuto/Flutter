@@ -6,6 +6,7 @@ class FormScreen extends StatefulWidget {
   @override
   State<FormScreen> createState() => _FormScreenState();
 }
+
 //https://cdn.pixabay.com/photo/2024/02/26/19/39/monochrome-image-8598798_640.jpg
 class _FormScreenState extends State<FormScreen> {
   TextEditingController nameController = TextEditingController();
@@ -18,7 +19,6 @@ class _FormScreenState extends State<FormScreen> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
@@ -43,8 +43,8 @@ class _FormScreenState extends State<FormScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      validator: (String? value){
-                        if(value != null && value.isEmpty){
+                      validator: (String? value) {
+                        if (value != null && value.isEmpty) {
                           return 'Insira o nome da tarefa';
                         }
                         return null;
@@ -62,10 +62,10 @@ class _FormScreenState extends State<FormScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      validator: (String? value){
-                        if(value!.isEmpty ||
-                            int.parse(value)>5 ||
-                            int.parse(value)<1){
+                      validator: (String? value) {
+                        if (value!.isEmpty ||
+                            int.parse(value) > 5 ||
+                            int.parse(value) < 1) {
                           return 'Insira a dificuldade entre 1 e 5';
                         }
                         return null;
@@ -84,13 +84,11 @@ class _FormScreenState extends State<FormScreen> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
-                      onChanged: (text){
-                          setState(() {
-            
-                          });
+                      onChanged: (text) {
+                        setState(() {});
                       },
-                      validator: (String? value){
-                        if(value != null && value.isEmpty){
+                      validator: (String? value) {
+                        if (value != null && value.isEmpty) {
                           return 'Insira uma url de imagem';
                         }
                         return null;
@@ -116,24 +114,31 @@ class _FormScreenState extends State<FormScreen> {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: Image.network(
-                          imageController.text,
-                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                            return Image.asset('assets/images/nophoto.jpg');
-                          },
-                          fit: BoxFit.cover),
+                      child: Image.network(imageController.text, errorBuilder:
+                          (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                        return Image.asset('assets/images/nophoto.jpg');
+                      }, fit: BoxFit.cover),
                     ),
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      if(_formKey.currentState!.validate()){
+                      if (_formKey.currentState!.validate()) {
                         print('validação ok');
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Salvando nova Tarefa'),
+                          ),
+                        );
                       }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                     ),
-                    child: const Text('Adicionar!',  style: TextStyle(color: Colors.white),),
+                    child: const Text(
+                      'Adicionar!',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   )
                 ],
               ),
