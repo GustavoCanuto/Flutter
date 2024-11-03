@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:nosso_primeiro_projeto/components/task.dart';
+import 'package:nosso_primeiro_projeto/data/task_dao.dart';
 import 'package:nosso_primeiro_projeto/data/task_inherited.dart';
 
 class FormScreen extends StatefulWidget {
   const FormScreen({super.key, required this.taskContext});
 
   final BuildContext taskContext;
+
   @override
   State<FormScreen> createState() => _FormScreenState();
 }
 
-//https://cdn.pixabay.com/photo/2024/02/26/19/39/monochrome-image-8598798_640.jpg
+//http://cdn.pixabay.com/photo/2024/02/26/19/39/monochrome-image-8598798_640.jpg
 class _FormScreenState extends State<FormScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController difficultyController = TextEditingController();
@@ -17,12 +20,13 @@ class _FormScreenState extends State<FormScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
-  bool valueValidator(String? value){
-    if(value != null && value.isEmpty){
+  bool valueValidator(String? value) {
+    if (value != null && value.isEmpty) {
       return true;
     }
     return false;
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -132,27 +136,29 @@ class _FormScreenState extends State<FormScreen> {
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                       // print('validação ok');
-                        TaskInherited.of(widget.taskContext).newTask(
-                            nameController.text,
-                            imageController.text,
-                            int.parse(difficultyController.text)
-                           );
+                        TaskDao().save(
+                            Task(nameController.text,
+                                imageController.text,
+                                int.parse(difficultyController.text)));
+                        // TaskInherited.of(widget.taskContext).newTask(
+                        //     nameController.text,
+                        //     imageController.text,
+                        //     int.parse(difficultyController.text));
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Salvando nova Tarefa'),
+                            content: Text('Criando uma nova Tarefa'),
                           ),
                         );
-                        Navigator.pop(context);
+                        Navigator.pop(context, true);
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                    ),
+                    backgroundColor: Colors.blue,
+                  ),
                     child: const Text(
-                      'Adicionar!',
-                      style: TextStyle(color: Colors.white),
-                    ),
+                           'Adicionar!',
+                         style: TextStyle(color: Colors.white),
+                         ),
                   )
                 ],
               ),
