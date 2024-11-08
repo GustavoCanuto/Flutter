@@ -6,16 +6,21 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Row(
-        children: <Widget>[
-          Column(
-            children: [
-              Text('\$1000.00'),
-              Text('Balanço disponivel')
-            ],
-          ),
-          Icon(Icons.account_circle),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16.0, 80.0, 16.0, 16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('\$1000.00', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),),
+                Text('Balanço disponivel',  style: TextStyle(fontSize: 16,),)
+              ],
+            ),
+            Icon(Icons.account_circle, size: 42,),
+          ],
+        ),
       ),
     );
   }
