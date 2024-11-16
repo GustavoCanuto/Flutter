@@ -1,5 +1,7 @@
 import 'package:alubank/components/box_card.dart';
+import 'package:alubank/components/colors_dot.dart';
 import 'package:alubank/components/sections/header.dart';
+import 'package:alubank/themes/theme_colors.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -11,7 +13,8 @@ class Home extends StatelessWidget {
       body: Column(
         children: <Widget>[
           Header(),
-          BoxCard(boxContent: Text('Olá mundo'),),
+          BoxCard(boxContent: ColorsDot(color: ThemeColors.recentActivity
+          ['spent']),),
         ],
       ),
     );
