@@ -18,20 +18,29 @@ class AccountActions extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BoxCard(
-                boxContent: _AccountActions(
-                    icon: Icon(Icons.account_balance_wallet),
-                    text: 'Depositar'),
+              InkWell(
+                onTap: (){},
+                child: BoxCard(
+                  boxContent: _AccountActions(
+                      icon: Icon(Icons.account_balance_wallet),
+                      text: 'Depositar'),
+                ),
               ),
-              BoxCard(
-                boxContent: _AccountActions(
-                    icon: Icon(Icons.account_balance_wallet),
-                    text: 'Depositar'),
+              InkWell(
+                onTap: (){},
+                child: BoxCard(
+                  boxContent: _AccountActions(
+                      icon: Icon(Icons.cached),
+                      text: 'Transferir'),
+                ),
               ),
-              BoxCard(
-                boxContent: _AccountActions(
-                    icon: Icon(Icons.account_balance_wallet),
-                    text: 'Depositar'),
+              InkWell(
+                onTap: (){},
+                child: BoxCard(
+                  boxContent: _AccountActions(
+                      icon: Icon(Icons.center_focus_strong),
+                      text: 'Ler'),
+                ),
               ),
             ],
           ),
@@ -49,11 +58,17 @@ class _AccountActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        icon,
-        Text(text),
-      ],
+    return Container(
+      width: 70,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: icon,
+          ),
+          Text(text),
+        ],
+      ),
     );
   }
 }

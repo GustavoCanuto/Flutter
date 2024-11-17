@@ -7,10 +7,10 @@ ThemeData MyTheme = ThemeData(
   brightness: Brightness.dark,
   textTheme: const TextTheme(
     bodyMedium: TextStyle(
-      fontSize: 16,
+      fontSize: 15,
     ),
     bodyLarge: TextStyle(
-      fontSize: 28,
+      fontSize: 27,
       fontWeight: FontWeight.bold,
     ),
     titleMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.normal,)
