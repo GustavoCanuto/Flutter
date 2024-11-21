@@ -3,29 +3,37 @@ import 'package:panucci_ristorante/cardapio.dart';
 import 'package:panucci_ristorante/components/highlight_item.dart';
 
 class Highlights extends StatelessWidget {
-const Highlights({ Key? key }) : super(key: key);
+  const Highlights({Key? key}) : super(key: key);
   final List items = destaques;
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
       child: CustomScrollView(
-        slivers: <Widget>  [
-          SliverToBoxAdapter(child: Text("Destaques")),
-          SliverList(delegate: SliverChildBuilderDelegate(
-            (context,index){
+        slivers: <Widget>[
+          const SliverToBoxAdapter(
+              child: Padding(
+            padding: const EdgeInsets.only(bottom: 16.0),
+            child: Text(
+              "Destaques",
+              style: TextStyle(fontFamily: "Caveat", fontSize: 32),
+              textAlign: TextAlign.center,
+            ),
+          )),
+          SliverList(
+              delegate: SliverChildBuilderDelegate(
+            (context, index) {
               return HighlightItem(
-                imageURI: items[index]["image"], 
-                itemTitle: items[index]["name"], 
-                itemPrice: items[index]["price"], 
-                itemDescription: items[index]["description"]
-                );
+                  imageURI: items[index]["image"],
+                  itemTitle: items[index]["name"],
+                  itemPrice: items[index]["price"],
+                  itemDescription: items[index]["description"]);
             },
             childCount: items.length,
           ))
         ],
       ),
-      
+
       // child: Column(
       //   children: [
       //     Text("Destaques"),
@@ -35,8 +43,8 @@ const Highlights({ Key? key }) : super(key: key);
       //         itemBuilder: (context, index) {
       //           return HighlightItem(
       //             imageURI: items[index]["image"],
-      //              itemTitle: items[index]["name"], 
-      //              itemPrice: items[index]["price"], 
+      //              itemTitle: items[index]["name"],
+      //              itemPrice: items[index]["price"],
       //              itemDescription: items[index]["description"]);
       //         },
       //         itemCount: items.length,
