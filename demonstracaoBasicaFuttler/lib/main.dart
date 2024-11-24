@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark(), // Tema escuro
+      theme: ThemeData.dark(),
       home: MyHomePage(),
     );
   }
@@ -21,19 +20,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String _text = "Bem Vindo ao Flutter"; // Texto inicial com contador
+  String _text = "Bem Vindo ao Flutter";
   Color _bgColor = Colors.black;
-  int _counter = 0; // Contador inicializado em 0
+  int _counter = 0;
 
-  // Função para alterar o texto
   void _changeText() {
     setState(() {
-      _counter++; // Incrementa o contador
-      _text = "Texto alterado $_counter"; // Atualiza o texto com o contador
+      _counter++;
+      _text = "Texto alterado $_counter";
     });
   }
 
-  // Função para alterar a cor de fundo
   void _changeBackgroundColor() {
     setState(() {
       _bgColor = (_bgColor == Colors.black) ? Colors.blueGrey : Colors.black;
@@ -44,17 +41,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Demonstração Básica Flutter"),
+        title: const Text("Demonstração Básica flutter"),
       ),
       body: Container(
-        color: _bgColor, // Cor de fundo que muda
+        color: _bgColor,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
+
             children: [
-              // Texto com contador
+              // Primeira Coluna divisão vertical
               Text(
                 _text,
                 style: const TextStyle(
@@ -64,20 +63,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
 
+              //Segunda Coluna da divisão vertical
+              // que vai ter uma linha, divisão horizontal
               // Botões em Row
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+
                 children: [
+
+                  //primeira divisão horizontal da linha
                   ElevatedButton(
                     onPressed: _changeText,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple, // Cor de fundo do botão
+                      backgroundColor: Colors.deepPurple,
                     ),
                     child: const Text("Alterar Texto"),
                   ),
-                  SizedBox(width: 20), // Espaço entre os botões
+
+                  const SizedBox(width: 20), // Espaço entre os botões
+
+                  //Segunda divisão horizontal da linha
                   ElevatedButton(
                     onPressed: _changeBackgroundColor,
                     style: ElevatedButton.styleFrom(
@@ -85,13 +92,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     child: const Text("Alterar Fundo"),
                   ),
-                ],
+
+                ], // acabou divisão da linah fim do children
               ),
-            ],
+
+            ], // acabou divisão da coluna fim do children
+
           ),
+
         ),
       ),
     );
   }
 }
+
+
 
