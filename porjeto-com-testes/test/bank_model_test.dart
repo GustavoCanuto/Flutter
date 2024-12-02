@@ -4,10 +4,30 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main(){
   //local, método e resultado
-  test('Bank model deposit should turn point into 10', () {
+  
+  group('Bank Model Deposit Tests', (){
+
+    test('Bank model deposit should turn point into 10', () {
+      final bank = BankModel();
+      bank.deposit(10);
+      expect(bank.points, 10);
+
+    });
+    test('Bank model deposit should turn available into 10', () {
+      final bank = BankModel();
+      bank.deposit(10);
+      expect(bank.available, 10);
+
+    });
+  });
+  
+  test('Bank model transfer should turn point into 10', () {
     final bank = BankModel();
-    bank.deposit(10);
+    bank.transfer(10);
     expect(bank.points, 10);
 
   });
+
+
+
 }
