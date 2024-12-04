@@ -13,6 +13,28 @@ void main(){
               child: Home(),
           ),
         ));
-
+  final spentFinder = find.text('Spent');
+  expect(spentFinder, findsOneWidget);
   });
+
+  testWidgets('finds a LinearProgressIndicator', (tester) async {
+    await tester.pumpWidget(
+        MaterialApp(
+          home: BankInherited(
+            child: Home(),
+          ),
+        ));
+    expect(find.byType(LinearProgressIndicator), findsOneWidget);
+  });
+
+  testWidgets('finds a AccountStatus', (tester) async {
+    await tester.pumpWidget(
+        MaterialApp(
+          home: BankInherited(
+            child: Home(),
+          ),
+        ));
+    expect(find.byKey(Key('testKey')), findsOneWidget);
+  });
+
 }
