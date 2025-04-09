@@ -43,7 +43,7 @@ return   ListView.builder(
       ),
       onDismissed: (direction) {
         setState(() {
-          list.types.removeAt(index);
+          list.remove(index);
         });
       },
     );
